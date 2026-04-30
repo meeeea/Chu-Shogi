@@ -27,8 +27,8 @@ The expected minimum amount of time each Sprint for each category is as follows:
 |Date      |Start Time|Category|Description                                 |Total Minutes|
 |----------|----------|:------:|--------------------------------------------|:-----------:|
 |  4/28/26 | 10:00PM  |   IM   |  Complete the module 1 plan assignment.    |   ~90min    |
-|          |          |        |                                            |             |
-|          |          |        |                                            |             |
+|  4/28/26 | 12:45PM  |   MTG  |  Class                                     |  1HR 30min  |
+|  4/30/26 | 11:30AM  |   IM   |  Began work on personal project            |  1HR 20min  |
 |          |          |        |                                            |             |
 |          |          |        |                                            |             |
 |          |          |        |                                            |             |

@@ -1,6 +1,10 @@
 ﻿#include <iostream>
+#include<stdio.h>
+#include "Point.h"
 
 int main() {
-    std::cout << "Hello World!" << std::endl;
-    return 1;
+    Point test_point (1, 1);
+
+    printf("%i", test_point.X());
+    return 0;
 }
