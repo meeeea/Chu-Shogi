@@ -1,9 +1,37 @@
 ﻿#include <iostream>
 #include <stdio.h>
+#include <vector>
 
 using namespace std;
 
+class piece;
+class PieceManager;
+class Board;
 
+
+class Piece {
+
+public:
+    char *name;
+    char team;
+    operator char*() const {return name;}
+    Piece(char *_name, char _team) : name(_name), team(_team) {};
+
+};
+
+class PieceManager {
+public:
+    PieceManager(Board *_board) : board(_board) {}
+
+    void AddPiece(Piece p) {
+        pieces.push_back(p);
+    }
+
+private:
+    Board *board;
+    std::vector<Piece> pieces;
+
+};
 
 class Board {
 
@@ -12,30 +40,46 @@ public:
         board[x*y];
         width = x;
         height = y;
-
-        for (int i = 0; i < x; i++) {
-            for (int k = 0; k < y; k++) {
-                board[i + k * x] = i*k;
-            }
-        }
     }
 
-    int AT(int x, int y) {
+    void PlacePiece(int x, int y, Piece *piece) {
+        board[x + y*width] = piece;
+    }
+
+    Piece* AT(int x, int y) {
         return board[x + width * y];
+    }
+
+    void Print() {
+        for (int i = 0; i < width; i++) {
+            for (int k = 0; k < height; k++) {
+                printf("+---");
+            }
+            printf("+\n");
+            for (int k = 0; k < height; k++) {
+                printf("|   ");
+            }
+            printf("|\n");
+        }
+        
+        
+        
+        for (int k = 0; k < height; k++) {
+            printf("+---");
+        }
+        printf("+\n");
     }
 
 private:
     int width;
     int height;
-    int board[];
+    Piece *board[];
 };
-
-
 
 int main() {
     Board board;
 
-    printf("%i", board.AT(5,2));
+    board.Print();
 
     return 0;
 }
