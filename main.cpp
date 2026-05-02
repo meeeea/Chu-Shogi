@@ -21,14 +21,13 @@ public:
 
 class PieceManager {
 public:
-    PieceManager(Board *_board) : board(_board) {}
+    PieceManager() {}
 
     void AddPiece(Piece p) {
         pieces.push_back(p);
     }
 
 private:
-    Board *board;
     std::vector<Piece> pieces;
 
 };
