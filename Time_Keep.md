@@ -31,7 +31,7 @@ The expected minimum amount of time each Sprint for each category is as follows:
 |  4/30/26 | 11:30AM  |   IM   |  Began work on personal project            |  1HR 20min  |
 |  4/30/26 | 12:45AM  |   MTG  |  Class                                     |  1HR        |
 |  4/30/26 | 01:45PM  |   IM   |  Figure out classes and stuff              |  2HR        |
-|          |          |        |                                            |             |
+|  5/02/26 | 10:00AM  |   IM   |  Implemented begining of Piece and Borad   |  2HR        |
 |          |          |        |                                            |             |
 
 _Note: Add more rows as needed._
