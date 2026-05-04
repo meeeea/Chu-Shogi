@@ -29,7 +29,6 @@ public:
 
 private:
     std::vector<Piece> pieces;
-
 };
 
 class Board {
