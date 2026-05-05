@@ -74,10 +74,10 @@ private:
     Piece *board[];
 };
 
-int main() {
+int main(int argc, char* argv[]) {
     Board board;
 
     board.Print();
-
+    
     return 0;
 }
