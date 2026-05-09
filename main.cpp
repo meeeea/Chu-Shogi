@@ -7,25 +7,31 @@
 
 using namespace std;
 
-class piece;
+
+class Piece;
 class PieceManager;
 class Board;
+void piecePrinter(Piece* piece, int piece_size);
 
 
 class Piece {
 
 public:
-    const char *name;
+    char *name;
     char team;
-    operator const char*() const {
-        std::string _name;
-        _name = " ";
-        _name += name;
-        _name.push_back(team);
-        _name.push_back(' ');
-        return _name.c_str();
+    void printPiece() {
+        printf("%s%c ", name, team);
     }
-    Piece(const char *_name, char _team) : name(_name), team(_team) {};
+
+
+    Piece(char *_name, char _team, int nameLen = 1) {
+        team = _team;
+        name = new char[nameLen];
+        for (int i = 0; i < nameLen; i++) {
+            name[i] = _name[i];
+        }
+        name[nameLen] = '\0';
+    };
 
 };
 
@@ -33,7 +39,7 @@ class PieceManager {
 public:
     PieceManager() {}
 
-    void AddPiece(const char *_name,char _team) {
+    void AddPiece(char *_name,char _team) {
         Piece p(_name, _team);
         pieces.push_back(p);
     }
@@ -70,15 +76,16 @@ public:
         string piecesetter;
         while (getline(reader, piecesetter)) {
             vector<string> instance = split(piecesetter, '|', 4);
-            int x = std::stoi(instance.at(0));
-            int y = std::stoi(instance.at(1));
-            const char * name = instance.at(2).c_str();
+            int y = std::stoi(instance.at(0)) - 1;
+            int x = std::stoi(instance.at(1)) - 1;
+            char *name = new char[instance.at(2).length() + 1];
+            std::strcpy(name, instance.at(2).c_str());
             char team = instance.at(3).at(0);
             PlacePiece(x, y, name, team);
         }
     }
 
-    void PlacePiece(int x, int y, const char *_name, char _team) {
+    void PlacePiece(int x, int y, char *_name, char _team) {
         pieces.AddPiece(_name, _team);
         board.at(x + y*width) = pieces.Back();
     }
@@ -102,7 +109,8 @@ public:
             }
             printf("+\n");
             for (int k = 0; k < height; k++) {
-                printf("|%s", board.at(i + k * width) ? (const char*) *board.at(i + k * width) : empty.c_str());
+                printf("| ");
+                piecePrinter(board[i + k * width], pieceNameLen);
             }
             printf("|\n");
         }
@@ -142,7 +150,7 @@ private:
 };
 
 int main(int argc, char* argv[]) {
-    if (argc < 3) {
+    if (argc < 2) {
         return 1;
     }
 
@@ -152,4 +160,15 @@ int main(int argc, char* argv[]) {
     board.Print();
     
     return 0;
+}
+
+void piecePrinter(Piece* piece, int piece_size) {
+    if (piece) {
+        piece->printPiece();
+    }
+    else {
+        for (int i = 0; i < piece_size + 1; i++) {
+            printf(" ");
+        }
+    }
 }
