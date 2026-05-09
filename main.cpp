@@ -3,6 +3,7 @@
 #include <vector>
 #include <cstring>
 #include <iomanip>
+#include <fstream>
 
 using namespace std;
 
@@ -53,6 +54,30 @@ public:
         pieceNameLen = _pieceNameLen;
     }
 
+    Board(char * filePath) {
+        std::ifstream reader(filePath);
+        string initializer[3];
+        getline(reader, initializer[0]);
+        getline(reader, initializer[0]);
+        getline(reader, initializer[1]);
+        getline(reader, initializer[2]);
+
+        width = std::stoi(initializer[0]);
+        height = std::stoi(initializer[1]);
+        pieceNameLen = std::stoi(initializer[2]);
+        board.resize(width * height);
+
+        string piecesetter;
+        while (getline(reader, piecesetter)) {
+            vector<string> instance = split(piecesetter, '|', 4);
+            int x = std::stoi(instance.at(0));
+            int y = std::stoi(instance.at(1));
+            const char * name = instance.at(2).c_str();
+            char team = instance.at(3).at(0);
+            PlacePiece(x, y, name, team);
+        }
+    }
+
     void PlacePiece(int x, int y, const char *_name, char _team) {
         pieces.AddPiece(_name, _team);
         board.at(x + y*width) = pieces.Back();
@@ -97,6 +122,23 @@ private:
     int pieceNameLen;
     PieceManager pieces;
     vector<Piece*> board;
+
+    vector<string> split(string str, char splitter, int size) {
+        vector<string> output(size);
+        int selector = -1;
+        int count = 0;
+        while ((selector = str.find(splitter)) != string::npos) {
+            output.at(count) = str.substr(0, selector);
+            
+            str = str.substr(selector + 1);
+            count++;
+            if (count == size) {
+                break;
+            }
+        }
+        output.back() = str;
+        return output;
+    }
 };
 
 int main(int argc, char* argv[]) {
@@ -104,9 +146,8 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    Board board( std::stoi(argv[1]), std::stoi(argv[2]), std::stoi(argv[3]));
+    Board board( argv[1] );
 
-    board.PlacePiece(0, 0, argv[4], 'W');
 
     board.Print();
     

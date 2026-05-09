@@ -32,7 +32,8 @@ The expected minimum amount of time each Sprint for each category is as follows:
 |  4/30/26 | 12:45AM  |   MTG  |  Class                                     |  1HR        |
 |  4/30/26 | 01:45PM  |   IM   |  Figure out classes and stuff              |  2HR        |
 |  5/02/26 | 10:00AM  |   IM   |  Implemented begining of Piece and Borad   |  2HR        |
-|          |          |        |                                            |             |
+|  5/07/26 | 12:30PM  |   IM   |  Implement board initialization            |  1HR 30min  |
+|  5/09/26 | 09:30AM  |   IM   |  
 
 _Note: Add more rows as needed._
 
