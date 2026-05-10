@@ -1,8 +1,8 @@
 # CSE 310 - Sprint Time Log
 
-Name:
+Name: Justin Hutchens
 
-Sprint #:
+Sprint #: 1
 
 ## Instructions
 
