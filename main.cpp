@@ -32,7 +32,6 @@ public:
         }
         name[nameLen] = '\0';
     };
-
 };
 
 class PieceManager {
@@ -87,7 +86,7 @@ public:
 
     void PlacePiece(int x, int y, char *_name, char _team) {
         pieces.AddPiece(_name, _team);
-        board.at(x + y*width) = pieces.Back();
+        board.at(x + y * width) = pieces.Back();
     }
 
     Piece* AT(int x, int y) {
@@ -95,11 +94,6 @@ public:
     }
 
     void Print() {
-        std::string empty = " ";
-        for (int i = 0; i < pieceNameLen + 1; i++) {
-            empty.push_back(' ');
-        }
-
         for (int i = 0; i < width; i++) {
             for (int k = 0; k < height; k++) {
                 printf("+");
